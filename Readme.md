@@ -17,10 +17,6 @@
 
   get a new store with a prefix added to localstorage keys
 
-### .prefix(_)
-
-  get a new store with a prefix added to localstorage keys
-
 ### .set(key, val)
 
   set a key, call JSON.stringify to serialize value
