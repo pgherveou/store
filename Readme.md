@@ -10,9 +10,17 @@
 ## API
 
 
-### Store(_)
+### require("store")
 
-  Initialize a new store with a prefix added to localstorage keys
+	get the default instance (without prefix)
+
+### .prefix(_)
+
+  get a new store with a prefix added to localstorage keys
+
+### .prefix(_)
+
+  get a new store with a prefix added to localstorage keys
 
 ### .set(key, val)
 

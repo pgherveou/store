@@ -4,11 +4,10 @@ var ls = window.localStorage;
  * Initialize a new store
  *
  * @param {String} [prefix] prefix added to localstorage keys
- * @api public
+ * @api private
  */
 
 function Store(_) {
-  if (!(this instanceof Store)) return new Store(_);
   this._ = _ || '';
 }
 
@@ -16,7 +15,18 @@ function Store(_) {
  * expose new Store instance
  */
 
-module.exports = Store;
+module.exports = new Store();
+
+/**
+ * create a new store
+ * @param {String} prefix
+ *
+ * @api public
+ */
+
+Store.prototype.prefix = function(prefix) {
+  return new Store(prefix);
+};
 
 /**
  * set a key, call JSON.stringify to serialize value

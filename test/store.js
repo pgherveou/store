@@ -1,20 +1,15 @@
 var expect = require('chai').expect
-  , Store = require('store')
+  , store = require('store')
   , ls = window.localStorage;
 
 describe('store', function() {
-  var store;
 
   beforeEach(function () {
-    store = new Store('test');
+    store = store.prefix('test');
   });
 
   afterEach(function() {
     store.clear();
-  });
-
-  it ('should create a new store', function() {
-    expect(store).to.be.instanceOf(Store);
   });
 
   it ('should set a value', function() {
