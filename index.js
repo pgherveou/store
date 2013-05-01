@@ -1,4 +1,4 @@
-ls = window.localStorage;
+var ls = window.localStorage;
 
 /**
  * Initialize a new store
