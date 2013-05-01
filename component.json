@@ -3,7 +3,7 @@
   "repo": "pgherveou/store",
   "description": "localstorage component",
   "version": "0.0.1",
-  "keywords": [],
+  "keywords": ["localStorage"],
   "dependencies": {},
   "development": {
     "chaijs/chai": "*"
