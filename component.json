@@ -1,0 +1,16 @@
+{
+  "name": "store",
+  "repo": "pgherveou/store",
+  "description": "localstorage component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {
+    "chaijs/chai": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
