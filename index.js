@@ -3,7 +3,7 @@ ls = window.localStorage;
 /**
  * Initialize a new store
  *
- * @param {String} [prefix]
+ * @param {String} [prefix] prefix added to localstorage keys
  * @api public
  */
 
@@ -19,7 +19,7 @@ function Store(_) {
 module.exports = Store;
 
 /**
- * set key
+ * set a key, call JSON.stringify to serialize value
  * @param {String} key
  * @param {Object} val
  *
@@ -31,7 +31,7 @@ Store.prototype.set = function(key, val) {
 };
 
 /**
- * get a key
+ * get a key call JSON.parse to deserialize value
  * @param  {String} [key]
  * @return {Object}
  *
@@ -47,7 +47,7 @@ Store.prototype.get = function(key) {
 };
 
 /**
- * save prefix value
+ * save the prefix value
  * shortcut for store.set(store._, val)
  *
  * @param  {Object} val
@@ -59,7 +59,7 @@ Store.prototype.save = function(val) {
 };
 
 /**
- * unset key
+ * unset a key
  * @param  {String} key
  *
  * @api public
