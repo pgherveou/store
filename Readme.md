@@ -1,4 +1,3 @@
-
 # store
 
   localstorage component
@@ -12,7 +11,7 @@
 
 ### require("store")
 
-	get the default instance (without prefix)
+  get the default instance (without prefix)
 
 ### .prefix(_)
 
