@@ -37,6 +37,7 @@ Store.prototype.prefix = function(prefix) {
  */
 
 Store.prototype.set = function(key, val) {
+  if (!val) return;
   ls.setItem(this._ + key, JSON.stringify(val));
 };
 
