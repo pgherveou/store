@@ -81,11 +81,28 @@ Store.prototype.unset = function(key) {
 };
 
 /**
- * clear storage
+ * clear all keys matching prefix
  *
  * @api public
  */
 
 Store.prototype.clear = function() {
+  var prefix = this._
+    , keys = Object.keys(ls).filter(function(key) {
+    return key.indexOf(prefix) === 0;
+  });
+  keys.forEach(function(key) {
+    ls.removeItem(key);
+  });
+};
+
+
+/**
+ * clear all values
+ *
+ * @api public
+ */
+
+Store.prototype.clearAll = function() {
   ls.clear();
 };

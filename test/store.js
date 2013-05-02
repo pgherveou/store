@@ -46,4 +46,20 @@ describe('store', function() {
     expect(testStore.get('foo1')).to.not.exist;
     expect(testStore.get('foo2')).to.not.exist;
   });
+
+  it ('should clear all prefixed values', function() {
+    store.set('foo1', 'bar1');
+    testStore.set('foo2', 'bar2');
+    testStore.clear();
+    expect(store.get('foo1')).to.be.ok
+    expect(testStore.get('foo2')).to.not.exist;
+  });
+
+  it ('should clear all values', function() {
+    store.set('foo1', 'bar1');
+    testStore.set('foo2', 'bar2');
+    testStore.clearAll();
+    expect(store.get('foo1')).to.not.exist;
+    expect(testStore.get('foo2')).to.not.exist;
+  });
 });

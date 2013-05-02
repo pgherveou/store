@@ -36,7 +36,11 @@
 
 ### .clear(key)
 
-  clear storage
+  clear all key matching prefix
+
+### .clearAll()
+
+  clear all localstorage
 
 ## License
 
