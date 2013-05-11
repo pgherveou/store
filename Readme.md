@@ -34,7 +34,7 @@
 
   unset a key
 
-### .clear(key)
+### .clear
 
   clear all key matching prefix
 
