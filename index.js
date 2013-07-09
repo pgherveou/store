@@ -1,6 +1,22 @@
 var ls = window.localStorage;
 
 /**
+ * test ls
+ */
+
+try {
+  ls.setItem('store-test', 'test');
+  ls.removeItem('store-test');
+} catch(e) {
+  ls = {
+    clear: function () {},
+    getItem: function () {},
+    removeItem: function () {},
+    setItem: function () {}
+  };
+}
+
+/**
  * Initialize a new store
  *
  * @param {String} [prefix] prefix added to localstorage keys
