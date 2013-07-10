@@ -49,12 +49,18 @@ Store.prototype.prefix = function(prefix) {
  * @param {String} key
  * @param {Object} val
  *
+ * @return {[Error]} return null or Error if anything has been thrown
  * @api public
  */
 
 Store.prototype.set = function(key, val) {
   if (!val) return;
-  ls.setItem(this._ + key, JSON.stringify(val));
+  try {
+    ls.setItem(this._ + key, JSON.stringify(val));
+    return null;
+  } catch(e) {
+    return e;
+  }
 };
 
 /**
@@ -75,14 +81,14 @@ Store.prototype.get = function(key) {
 
 /**
  * save the prefix value
- * shortcut for store.set(store._, val)
+ * shortcut for store.set('', val)
  *
  * @param  {Object} val
  * @api public
  */
 
 Store.prototype.save = function(val) {
-  return ls.setItem(this._, JSON.stringify(val));
+  return this.set('', val);
 };
 
 /**

@@ -51,7 +51,7 @@ describe('store', function() {
     store.set('foo1', 'bar1');
     testStore.set('foo2', 'bar2');
     testStore.clear();
-    expect(store.get('foo1')).to.be.ok
+    expect(store.get('foo1')).to.be.ok;
     expect(testStore.get('foo2')).to.not.exist;
   });
 
@@ -61,5 +61,19 @@ describe('store', function() {
     testStore.clearAll();
     expect(store.get('foo1')).to.not.exist;
     expect(testStore.get('foo2')).to.not.exist;
+  });
+
+  it ('should return an error if we exceed ls quota', function() {
+    var bigString = ""
+      , i = 0
+      , j = 0;
+
+    for (;i <= 1000; i++) bigString += '|';
+
+    while(true) {
+      var err = store.set('key' + j++, bigString);
+      if (err) return;
+    }
+
   });
 });

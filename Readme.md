@@ -20,6 +20,7 @@
 ### .set(key, val)
 
   set a key, call JSON.stringify to serialize value
+  catch and return error thrown by localstorage
 
 ### .get(key)
 
