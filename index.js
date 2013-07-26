@@ -24,6 +24,8 @@ try {
  */
 
 function Store(_) {
+ if (!(this instanceof Store))
+    return new Store(_);
   this._ = _ || '';
 }
 
@@ -64,6 +66,25 @@ Store.prototype.set = function(key, val) {
 };
 
 /**
+ * set a key, value without serializing
+ * @param {String} key
+ * @param {String} val
+ *
+ * @return {[Error]} return null or Error if anything has been thrown
+ * @api public
+ */
+
+Store.prototype.setItem = function(key, val) {
+  if (!val) return;
+  try {
+    ls.setItem(this._ + key, val);
+    return null;
+  } catch(e) {
+    return e;
+  }
+};
+
+/**
  * get a key call JSON.parse to deserialize value
  * @param  {String} [key]
  * @return {Object}
@@ -77,6 +98,18 @@ Store.prototype.get = function(key) {
   } catch (_error) {
     return null;
   }
+};
+
+/**
+ * get Item as string without deserializing
+ * @param  {String} [key]
+ * @return {Object}
+ *
+ * @api public
+ */
+
+Store.prototype.getItem = function(key) {
+  return ls.getItem(this._ + (key || ''));
 };
 
 /**

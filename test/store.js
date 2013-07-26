@@ -12,18 +12,28 @@ describe('store', function() {
   });
 
   it ('should set a value', function() {
-    testStore.set('foo', 'bar');
-    expect(store.get('testfoo')).to.be.eq('bar');
+    testStore.set('foo', {foo: 'bar'});
+    expect(store.get('testfoo')).to.deep.eq({foo: 'bar'});
+  });
+
+  it ('should set a string value', function() {
+    testStore.setItem('foo', 'bar');
+    expect(store.getItem('testfoo')).to.eq('bar');
   });
 
   it ('should get a value', function() {
-    testStore.set('foo', 'bar');
-    expect(testStore.get('foo')).to.be.eq('bar');
+    testStore.set('foo', {foo: 'bar'});
+    expect(testStore.get('foo')).to.deep.eq({foo: 'bar'});
+  });
+
+  it ('should get a string value', function() {
+    testStore.setItem('foo', 'bar');
+    expect(testStore.getItem('foo')).to.eq('bar');
   });
 
   it ('should save a value', function() {
-    testStore.save('bar');
-    expect(store.get('test')).to.be.eq('bar');
+    testStore.save({foo: 'bar'});
+    expect(store.get('test')).to.deep.eq({foo: 'bar'});
   });
 
   it ('null or undefined value should be unserialized as null', function() {
