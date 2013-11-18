@@ -24,8 +24,7 @@ try {
  */
 
 function Store(_) {
- if (!(this instanceof Store))
-    return new Store(_);
+  if (!(this instanceof Store)) return new Store(_);
   this._ = _ || '';
 }
 
@@ -46,22 +45,27 @@ Store.prototype.prefix = function(prefix) {
   return new Store(prefix);
 };
 
+// alias prefix with ns
+Store.prototype.ns = Store.prototype.prefix;
+
 /**
  * set a key, call JSON.stringify to serialize value
  * @param {String} key
  * @param {Object} val
  *
- * @return {[Error]} return null or Error if anything has been thrown
+ * @return {Number} return val.length or 0 if anything has been thrown
+ *
  * @api public
  */
 
 Store.prototype.set = function(key, val) {
-  if (!val) return;
+  var data;
   try {
-    ls.setItem(this._ + key, JSON.stringify(val));
-    return null;
+    data = JSON.stringify(val || null);
+    ls.setItem(this._ + key, data);
+    return data.length;
   } catch(e) {
-    return e;
+    return 0;
   }
 };
 
@@ -135,6 +139,9 @@ Store.prototype.unset = function(key) {
   ls.removeItem(this._ + key);
 };
 
+// alias unset with del
+Store.prototype.del = Store.prototype.unset;
+
 /**
  * clear all keys matching prefix
  *
@@ -142,8 +149,8 @@ Store.prototype.unset = function(key) {
  */
 
 Store.prototype.clear = function() {
-  var prefix = this._
-    , keys = Object.keys(ls).filter(function(key) {
+  var prefix = this._,
+      keys = Object.keys(ls).filter(function(key) {
     return key.indexOf(prefix) === 0;
   });
   keys.forEach(function(key) {
@@ -151,6 +158,9 @@ Store.prototype.clear = function() {
   });
 };
 
+// alias clear with reset
+
+Store.prototype.reset = Store.prototype.clear;
 
 /**
  * clear all values

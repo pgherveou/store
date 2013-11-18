@@ -1,5 +1,8 @@
-var expect = require('chai').expect
-  , store = require('store');
+/* global describe:true,beforeEach:true,afterEach:true,it:true */
+
+var expect = require('chai').expect,
+    store = require('store'),
+    testStore;
 
 describe('store', function() {
 
@@ -74,15 +77,15 @@ describe('store', function() {
   });
 
   it ('should return an error if we exceed ls quota', function() {
-    var bigString = ""
-      , i = 0
-      , j = 0;
+    var bigString = '',
+        j = 0,
+        i;
 
-    for (;i <= 1000; i++) bigString += '|';
+    for (i = 0 ; i <= 1000; i++) bigString += '|';
 
     while(true) {
-      var err = store.set('key' + j++, bigString);
-      if (err) return;
+      var len = store.set('k-' + j++, bigString);
+      if (!len) return;
     }
 
   });

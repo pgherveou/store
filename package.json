@@ -1,0 +1,14 @@
+{
+  "name": "store",
+  "version": "0.0.5",
+  "description": "localstorage component for the browser",
+
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-shell": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-clean": "*"
+  }
+}
