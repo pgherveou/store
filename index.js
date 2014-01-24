@@ -1,10 +1,13 @@
-var ls = window.localStorage;
+var ls;
 
 /**
  * test ls
+ * make sur ls exists and
+ * workaround `SecurityError: DOM Exception 18`
  */
 
 try {
+  ls = window.localStorage;
   ls.setItem('store-test', 'test');
   ls.removeItem('store-test');
 } catch(e) {
